@@ -5,13 +5,13 @@ import iducs.capstone.subway.entity.TrainEntity;
 
 public interface TrainService {
     public void load_save();
+    public void register(TrainEntity trainEntity);
 
     default TrainEntity DtoToEntity(Train train){
         TrainEntity entity = TrainEntity.builder()
                 .seq(train.getSeq())
                 .subwayId(train.getSubwayId())
                 .statnId(train.getStatnId())
-                .recptnDt(train.getRecptnDt())
                 .updnLine(train.getUpdnLine())
                 .statnTnm(train.getStatnTnm())
                 .trainSttus(train.getTrainSttus())
@@ -24,7 +24,6 @@ public interface TrainService {
                 .seq(entity.getSeq())
                 .subwayId(entity.getSubwayId())
                 .statnId(entity.getStatnId())
-                .recptnDt(entity.getRecptnDt())
                 .updnLine(entity.getUpdnLine())
                 .statnTnm(entity.getStatnTnm())
                 .trainSttus(entity.getTrainSttus())
