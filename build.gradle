@@ -34,9 +34,10 @@ dependencies {
     }
     //testImplementation 'org.springframework.boot:spring-boot-starter-test'
     //testImplementation 'io.projectreactor:reactor-test'
-    implementation 'org.jsoup:jsoup:1.15.3'
+    //implementation 'org.jsoup:jsoup:1.15.3'
     implementation "com.querydsl:querydsl-jpa:5.0.0"
     implementation "com.querydsl:querydsl-apt:5.0.0"
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
 }
 
 tasks.named('test') {
@@ -46,7 +47,7 @@ def querydslDir = "$buildDir/generated/querydsl"
 
 querydsl {
     jpa = true
-    querydslSourcesDir = querydslDir
+   querydslSourcesDir = querydslDir
 }
 sourceSets {
     main.java.srcDir querydslDir

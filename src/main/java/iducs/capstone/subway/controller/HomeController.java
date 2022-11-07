@@ -1,4 +1,4 @@
-package iducs.capstone.subway.Controller;
+package iducs.capstone.subway.controller;
 
 
 import org.springframework.stereotype.Controller;
