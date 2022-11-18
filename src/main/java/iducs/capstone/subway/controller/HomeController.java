@@ -31,44 +31,4 @@ public class HomeController {
         return "/index.html";
     }
 
-    @GetMapping("/api")
-    public String losa() {
-        /*String result = "";
-
-        try {
-
-            URL url = new URL("http://swopenapi.seoul.go.kr/api/subway/6a6b5775696b6a6836384766447979/json/realtimePosition/0/100/1%ED%98%B8%EC%84%A0");
-            BufferedReader bf;
-            bf = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
-            result = bf.readLine();
-
-            JSONParser jsonParser = new JSONParser();
-            JSONObject jsonObject = (JSONObject) jsonParser.parse(result);
-
-
-
-
-            JSONArray infoArr = (JSONArray) jsonObject.get("realtimePositionList");
-
-            for (int i = 0; i < infoArr.size(); i++) {
-                JSONObject tmp = (JSONObject) infoArr.get(i);
-                TrainEntity entity = TrainEntity.builder()
-                        .subwayId((String) tmp.get("subwayId"))
-                        .statnId((String) tmp.get("statnId"))
-                        .updnLine((String) tmp.get("updnLine"))
-                        .statnTnm((String)tmp.get("statnTnm"))
-                        .trainSttus((String) tmp.get("trainSttus"))
-                        .directAt((String) tmp.get("directAt"))
-                        .build();
-
-                trainService.register(entity);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-        trainService.load_save();
-        return "/index.html";
-    }
-
 }
