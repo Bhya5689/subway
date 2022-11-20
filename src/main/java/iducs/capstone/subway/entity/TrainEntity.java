@@ -3,7 +3,6 @@ package iducs.capstone.subway.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "trains")
@@ -26,13 +25,5 @@ public class TrainEntity extends BaseEntity{
     private String trainSttus;        //열차상태구분 (0:진입 1:도착, 0,1외 나머지는:출발)
     private String directAt;          //급행여부 (1:급행, 0:아님)
 
-    /*public TrainEntity(Long subwayId, Long statnId, Long updnLine,
-                       String statnTnm, Long trainSttus, Long directAt){
-        this.subwayId = subwayId;
-        this.statnId = statnId;
-        this.updnLine = updnLine;
-        this.statnTnm = statnTnm;
-        this.trainSttus = trainSttus;
-        this.directAt = directAt;
-    }*/
+
 }
