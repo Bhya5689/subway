@@ -30,7 +30,7 @@ public class TrainServiceImpl implements TrainService {
     @Scheduled(cron = "0/30 * * * * *", zone = "Asia/Seoul")
     @Override
     public void load_save() {
-        trainRepository.deleteAll();
+        /*trainRepository.deleteAll();
         String result = "";
 
         for (int j = 1; j<10; j++)
@@ -65,7 +65,7 @@ public class TrainServiceImpl implements TrainService {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
+*/
     }
 
     @Override
