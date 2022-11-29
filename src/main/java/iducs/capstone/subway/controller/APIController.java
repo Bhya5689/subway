@@ -1,20 +1,26 @@
 package iducs.capstone.subway.controller;
 
+import iducs.capstone.subway.entity.TrainDetailsEntity;
 import iducs.capstone.subway.entity.TrainEntity;
+import iducs.capstone.subway.service.TrainDetailService;
 import iducs.capstone.subway.service.TrainService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 public class APIController {
     private final TrainService trainService;
+    private final TrainDetailService trainDetailService;
 
-    public APIController(TrainService trainService) {
+    public APIController(TrainService trainService, TrainDetailService trainDetailService) {
         this.trainService = trainService;
+        this.trainDetailService = trainDetailService;
     }
 
     @GetMapping("/line1")
@@ -77,6 +83,12 @@ public class APIController {
     public List<TrainEntity> trainList(){
         List<TrainEntity> entities = trainService.getTListBySubId("1009");
         System.out.println(entities);
+        return entities;
+    }
+    @GetMapping("/detail/{str}")
+    public List<TrainDetailsEntity> trainList(@PathVariable("str") String str) throws UnsupportedEncodingException {
+        trainDetailService.load_save(str);
+        List<TrainDetailsEntity> entities = trainDetailService.getTListByStaNm(str);
         return entities;
     }
 }
