@@ -8,9 +8,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 public interface TrainDetailService {
-    public void load_save(String str) throws UnsupportedEncodingException;
+    public void load_save(String str);
     public void register(TrainDetailsEntity trainDetailsEntity);
-    public List<TrainDetailsEntity> getTListByStaNm(String subId);
+    public List<TrainDetailsEntity> getTListBySubId(String subId);
 
     default TrainDetailsEntity DtoToEntity(TrainDetails trainDetails){
         TrainDetailsEntity entity = TrainDetailsEntity.builder()

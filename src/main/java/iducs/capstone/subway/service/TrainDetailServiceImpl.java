@@ -10,8 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Service
@@ -23,16 +24,33 @@ public class TrainDetailServiceImpl implements TrainDetailService {
         this.trainDetailsRepository = trainDetailsRepository;
     }
 
-    public void load_save(String str) throws UnsupportedEncodingException {
+    public void load_save(String str) {
         trainDetailsRepository.deleteAll();
         String result = "";
+        StringBuilder sb = new StringBuilder();
 
-        byte[] ptext = str.getBytes("ISO-8859-1");
-        String value = new String(ptext, "UTF-8");
-        System.out.println(value);
+        byte[] getBytesFromString = str.getBytes(StandardCharsets.UTF_8);
+        BigInteger bigInteger = new BigInteger(1, getBytesFromString);
+
+        String convertedResult = String.format("%x", bigInteger);
+
+        char [] charArr = convertedResult.toCharArray();
+
+        for (int i = 0; i < charArr.length; i++){
+            if (i%2 == 0){
+                sb.append("%");
+                sb.append(charArr[i]);
+            }
+            else {
+                sb.append(charArr[i]);
+            }
+        }
+        str = sb.toString();
+        System.out.println(str);
+
         try {
 
-                URL url = new URL("http://swopenapi.seoul.go.kr/api/subway/6a6b5775696b6a6836384766447979/json/realtimeStationArrival/0/30/"+ value);
+                URL url = new URL("http://swopenapi.seoul.go.kr/api/subway/6a6b5775696b6a6836384766447979/json/realtimeStationArrival/0/30/"+ str);
                 BufferedReader bf;
                 bf = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
                 result = bf.readLine();
@@ -71,8 +89,8 @@ public class TrainDetailServiceImpl implements TrainDetailService {
     }
 
     @Override
-    public List<TrainDetailsEntity> getTListByStaNm(String  staNm) {
-        List<TrainDetailsEntity> entities = trainDetailsRepository.getDetailListByStaNm(staNm);
+    public List<TrainDetailsEntity> getTListBySubId(String  subId) {
+        List<TrainDetailsEntity> entities = trainDetailsRepository.getDetailListBySubId(subId);
         return entities;
     }
 }

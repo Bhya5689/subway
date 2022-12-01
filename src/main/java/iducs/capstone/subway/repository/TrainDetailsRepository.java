@@ -11,6 +11,6 @@ import java.util.List;
 public interface TrainDetailsRepository extends JpaRepository<TrainDetailsEntity, Long>,
         QuerydslPredicateExecutor<TrainDetailsEntity> {
 
-    @Query("select t from TrainDetailsEntity t where t.statnNm = :staNm")
-    List<TrainDetailsEntity> getDetailListByStaNm(@Param("staNm") String staNm);
+    @Query("select t from TrainDetailsEntity t where t.subwayId = :subId")
+    List<TrainDetailsEntity> getDetailListBySubId(@Param("subId") String subId);
 }

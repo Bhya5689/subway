@@ -85,10 +85,10 @@ public class APIController {
         System.out.println(entities);
         return entities;
     }
-    @GetMapping("/detail/{str}")
-    public List<TrainDetailsEntity> trainList(@PathVariable("str") String str) throws UnsupportedEncodingException {
+    @GetMapping("/detail/{str}/{lineId}")
+    public List<TrainDetailsEntity> trainList(@PathVariable("str") String str, @PathVariable("lineId") String lineId){
         trainDetailService.load_save(str);
-        List<TrainDetailsEntity> entities = trainDetailService.getTListByStaNm(str);
+        List<TrainDetailsEntity> entities = trainDetailService.getTListBySubId(lineId);
         return entities;
     }
 }
