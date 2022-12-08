@@ -74,6 +74,7 @@ public class TrainDetailServiceImpl implements TrainDetailService {
                             .statnFid((String) tmp.get("statnFid"))
                             .statnTid((String) tmp.get("statnTid"))
                             .barvlDt((String) tmp.get("barvlDt"))
+                            .arvlMsg2((String) tmp.get("arvlMsg2"))
                             .build();
                     trainDetailsRepository.save(entity);
                 }

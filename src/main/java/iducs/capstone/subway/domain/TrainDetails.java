@@ -18,4 +18,5 @@ public class TrainDetails {
     private String statnFid;                //이전지하철ID
     private String statnTid;                //다음지하철ID
     private String barvlDt;                 //열차도착예정시간(단위:초)
+    private String arvlMsg2;                //첫번째도착메세지 (전역 진입, 전역 도착 등)
 }
